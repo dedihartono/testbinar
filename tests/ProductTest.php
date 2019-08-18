@@ -6,8 +6,7 @@ use App\Http\Controllers\ProductController;
 
 class ProductTest extends TestCase
 {
-
-
+    use DatabaseMigrations;
     use DatabaseTransactions;
     /**
      * A basic test example.
