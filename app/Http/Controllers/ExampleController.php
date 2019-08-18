@@ -11,8 +11,22 @@ class ExampleController extends Controller
      */
     public function __construct()
     {
-        //
+
     }
 
-    //
+    /**
+     * index
+     *
+     * @return void
+     */
+    public function index() {
+
+        $data['status'] = 'OK';
+        $data['result'] = 'Welcome to Binar Test';
+        $data['errors'] = null;
+
+        return response()->json($data);
+    }
+
+
 }

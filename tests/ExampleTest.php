@@ -14,8 +14,14 @@ class ExampleTest extends TestCase
     {
         $this->get('/');
 
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
+        $input['status'] = 'OK';
+        $input['result'] = 'Welcome to Binar Test';
+        $input['errors'] = null;
+
+        $expect = json_encode($input);
+        $output = $this->response->getContent();
+
+        $this->assertEquals($expect, $output);
     }
+
 }
