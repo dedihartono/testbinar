@@ -11,7 +11,6 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction
-  - cp .my.cnf ~travis/.my.cnf
   - mysql -e 'CREATE DATABASE testbinar_testing;'
 
 script:
