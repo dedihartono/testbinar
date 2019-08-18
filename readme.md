@@ -35,3 +35,8 @@ Note :
 # Running Test
 1. Buka Terminal dan jalankan :
 2. vendor/bin/phpunit
+
+# Demo
+https://testbinard.herokuapp.com/
+
+# API Documentation
