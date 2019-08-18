@@ -60,4 +60,67 @@ class ProductTest extends TestCase
         $expect = json_encode($input);
         $this->assertEquals($expect, $output);
     }
+
+    // public function testCreate()
+    // {
+    //     $input = factory('App\Product')->create();
+
+    //     $data = [
+    //         'price' => $input->price,
+    //         'imageurl' => $input->imageurl
+    //     ];
+
+    //     $this->post('/v1/products/', $data);
+    //     $output = $this->response->getContent();
+
+    //     $database = \App\Product::first();
+
+    //     $response['status'] = 'OK';
+    //     $response['result'] = $database->getAttributes();
+    //     $response['errors'] = '';
+
+
+    //     $expect = json_encode($response);
+    //     $this->assertEquals($expect, $output);
+    // }
+
+    public function testShow()
+    {
+        $data = factory('App\Product')->create();
+        $this->get('/v1/products/'.$data->id);
+
+        $output = $this->response->getContent();
+        $input['status'] = 'OK';
+        $input['result'] = $data->getAttributes();
+        $input['errors'] = '';
+
+        $expect = json_encode($input);
+        $this->assertEquals($expect, $output);
+    }
+
+    // public function testUpdate()
+    // {
+    //     $data = factory('App\Product')->create();
+    //     $this->put('/v1/products/'.$data->id);
+    //     $output = $this->response->getContent();
+    //     $input['status'] = 'OK';
+    //     $input['result'] = [ 'message' => $data->id . ' deleted' ];
+    //     $input['errors'] = '';
+
+    //     $expect = json_encode($input);
+    //     $this->assertEquals($expect, $output);
+    // }
+
+    public function testDelete()
+    {
+        $data = factory('App\Product')->create();
+        $this->delete('/v1/products/'.$data->id);
+        $output = $this->response->getContent();
+        $input['status'] = 'OK';
+        $input['result'] = [ 'message' => $data->id . ' deleted' ];
+        $input['errors'] = '';
+
+        $expect = json_encode($input);
+        $this->assertEquals($expect, $output);
+    }
 }

@@ -52,6 +52,51 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
+    public function show($id)
+    {
+        $model = Product::find($id);
+        $data['status'] = 'OK';
+        $data['result'] = $model;
+        $data['errors'] = '';
+
+        return response()->json($data);
+    }
+
+    public function store(Request $request)
+    {
+        $model = Product::create($request->all());
+        $data['status'] = 'OK';
+        $data['result'] = $model;
+        $data['errors'] = '';
+        return response()->json($data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $model = Product::find($id);
+        $model->price = $request->input('price');
+        $model->imageurl = $request->input('imageurl');
+        $model->save();
+
+        $data['status'] = 'OK';
+        $data['result'] = $model;
+        $data['errors'] = '';
+        return response()->json($data);
+    }
+
+    public function delete($id)
+    {
+        $model = Product::find($id);
+        $model->delete();
+
+        $data['status'] = 'OK';
+        $data['result'] = [ 'message' =>  $id. ' deleted' ];
+        $data['errors'] = '';
+        return response()->json($data);
+    }
+
+
+
     /**
      * checkPrefix
      *

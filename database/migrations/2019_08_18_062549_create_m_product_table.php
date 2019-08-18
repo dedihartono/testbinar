@@ -15,6 +15,7 @@ class CreateMProductTable extends Migration
     {
         Schema::create('m_product', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name', 64)->nullable()->dafault(null);
             $table->float('price', 8,2);
             $table->string('imageurl', 128)->nullable()->dafault(null);
             $table->timestamps();
