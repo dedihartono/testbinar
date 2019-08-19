@@ -42,5 +42,3 @@ Note :
  - Tahap Production menggunakan Heroku
   
    https://testbinard.herokuapp.com/
-
-# API Documentation
