@@ -42,39 +42,39 @@ class ProductTest extends TestCase
     //     $output = $this->response->getContent();
     //     $input['status'] = 'OK';
     //     $input['result'][] = $data->getAttributes();
-    //     $input['errors'] = '';
+    //     $input['errors'] = [];
 
     //     $expect = json_encode($input);
     //     $this->assertEquals($expect, $output);
     // }
 
-    // public function testGetDataV1()
-    // {
-    //     $data = factory('App\Product')->create();
-    //     $prefix = 'v1';
-    //     $controller = new ProductController;
-    //     $output = $controller->getDataAll($prefix);
-    //     $output = $output->getContent();
+    public function testGetDataV1()
+    {
+        $data = factory('App\Product')->create();
+        $prefix = 'v1';
+        $controller = new ProductController;
+        $output = $controller->getDataAll($prefix);
+        $output = $output->getContent();
 
-    //     $input['status'] = 'OK';
-    //     $input['result'][] = $data->getAttributes();
-    //     $input['errors'] = '';
+        $input['status'] = 'OK';
+        $input['result'][] = $data->getAttributes();
+        $input['errors'] = [];
 
-    //     $expect = json_encode($input);
-    //     $this->assertEquals($expect, $output);
-    // }
+        $expect = json_encode($input);
+        $this->assertEquals($expect, $output);
+    }
 
-    // public function testGetDataV2()
-    // {
-    //     $prefix = 'v2';
-    //     $controller = new ProductController;
-    //     $output = $controller->getDataAll($prefix);
-    //     $output = $output->getContent();
+    public function testGetDataV2()
+    {
+        $prefix = 'v2';
+        $controller = new ProductController;
+        $output = $controller->getDataAll($prefix);
+        $output = $output->getContent();
 
-    //     $input['message'] = 'Hello there';
-    //     $expect = json_encode($input);
-    //     $this->assertEquals($expect, $output);
-    // }
+        $input['message'] = 'Hello there';
+        $expect = json_encode($input);
+        $this->assertEquals($expect, $output);
+    }
 
     // public function testCreate()
     // {
@@ -101,13 +101,30 @@ class ProductTest extends TestCase
 
     // public function testShow()
     // {
+    //     $user = \App\User::create([
+    //         'name'=>'bot',
+    //         'email'=>'bot@example.com',
+    //         'password'=> password_hash('bot', PASSWORD_BCRYPT)
+    //     ]);
+
+    //     $input = [
+    //         'email' => $user->email,
+    //         'password' => 'bot'
+    //     ];
+    //     $response = $this->post('/auth/login', $input);
+    //     $response = $this->response->getContent();
+    //     $auth = json_decode($response);
+    //     $header = [
+    //         'Authorization' => $auth
+    //     ];
+
     //     $data = factory('App\Product')->create();
-    //     $this->get('/v1/products/'.$data->id);
+    //     $this->get('/v1/products/'.$data->id, [ 'Authorization' => $auth  ]);
 
     //     $output = $this->response->getContent();
     //     $input['status'] = 'OK';
     //     $input['result'] = $data->getAttributes();
-    //     $input['errors'] = '';
+    //     $input['errors'] = [];
 
     //     $expect = json_encode($input);
     //     $this->assertEquals($expect, $output);
@@ -120,7 +137,7 @@ class ProductTest extends TestCase
     //     $output = $this->response->getContent();
     //     $input['status'] = 'OK';
     //     $input['result'] = [ 'message' => $data->id . ' deleted' ];
-    //     $input['errors'] = '';
+    //     $input['errors'] = [];
 
     //     $expect = json_encode($input);
     //     $this->assertEquals($expect, $output);
@@ -133,7 +150,7 @@ class ProductTest extends TestCase
     //     $output = $this->response->getContent();
     //     $input['status'] = 'OK';
     //     $input['result'] = [ 'message' => $data->id . ' deleted' ];
-    //     $input['errors'] = '';
+    //     $input['errors'] = [];
 
     //     $expect = json_encode($input);
     //     $this->assertEquals($expect, $output);
