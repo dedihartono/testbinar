@@ -35,3 +35,12 @@ Note :
 # Running Test
 1. Buka Terminal dan jalankan :
 2. vendor/bin/phpunit
+
+# Demo
+ - Project ini menerapkan CI(Continuous Delivery) - CD (Continuous Deployment)
+ - Tahap staging test menggunakan Travis-CI
+ - Tahap Production menggunakan Heroku
+  
+   https://testbinard.herokuapp.com/
+
+# API Documentation
