@@ -13,7 +13,10 @@
 
 $router->get('/', 'ExampleController@index');
 
-$router->group(['prefix' => 'v1'], function () use ($router) {
+$router->post('auth/signup', 'AuthController@signup');
+$router->post('auth/login', 'AuthController@authenticate');
+
+$router->group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () use ($router) {
     $router->get('products', 'ProductController@index');
     $router->get('products/{id}', 'ProductController@show');
     $router->post('products', 'ProductController@store');
@@ -24,4 +27,3 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
 $router->group(['prefix' => 'v2'], function () use ($router) {
     $router->get('products', 'ProductController@index');
 });
-
