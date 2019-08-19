@@ -37,6 +37,10 @@ Note :
 2. vendor/bin/phpunit
 
 # Demo
-https://testbinard.herokuapp.com/
+ - Project ini menerapkan CI(Continuous Delivery) - CD (Continuous Deployment)
+ - Tahap staging test menggunakan Travis-CI
+ - Tahap Production menggunakan Heroku
+  
+   https://testbinard.herokuapp.com/
 
 # API Documentation
