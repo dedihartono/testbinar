@@ -12,10 +12,7 @@ class JwtMiddleware
 {
     public function handle($request, Closure $next, $guard = null)
     {
-        $token = $request->header('token');
-        if(empty($token)){
-            $token = $request->get('token');
-        }
+        $token = $request->header('Authorization');
 
         if (!$token) {
             return response()->json([

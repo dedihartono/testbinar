@@ -61,16 +61,42 @@ class AuthController extends BaseController
         $user = User::where('email', $this->request->input('email'))->first();
         if (!$user) {
             return response()->json([
-                'error' => 'Email does not exist.'
+                'status' => false,
+                'errors' => 'Email does not exist.'
             ], 400);
         }
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
-                'token' => $this->jwt($user)
+                'status' => 'OK',
+                'access_token' => $this->jwt($user),
+                'errors' => []
             ], 200);
         }
         return response()->json([
-            'error' => 'Email or password is wrong.'
+            'status' => false,
+            'errors' => 'Email or password is wrong.'
         ], 400);
+    }
+
+    public function signup()
+    {
+        $this->validate($this->request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:user,email',
+            'password' => 'required'
+        ]);
+
+        $model = User::create([
+            'name' => $this->request->input('name'),
+            'email' => $this->request->input('email'),
+            'password' => password_hash($this->request->input('password'), PASSWORD_BCRYPT)
+        ]);
+
+        $data['status'] = 'OK';
+        $data['result'] = $model;
+        $data['result']['password_digest'] = password_hash($this->request->input('password'), PASSWORD_BCRYPT);
+        $data['errors'] = [];
+
+        return response()->json($data);
     }
 }

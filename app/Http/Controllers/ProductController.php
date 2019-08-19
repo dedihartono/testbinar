@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         $data['status'] = 'OK';
         $data['result'] = $model;
-        $data['errors'] = '';
+        $data['errors'] = [];
 
         return response()->json($data);
     }
@@ -57,7 +57,7 @@ class ProductController extends Controller
         $model = Product::find($id);
         $data['status'] = 'OK';
         $data['result'] = $model;
-        $data['errors'] = '';
+        $data['errors'] = [];
 
         return response()->json($data);
     }
@@ -67,7 +67,7 @@ class ProductController extends Controller
         $model = Product::create($request->all());
         $data['status'] = 'OK';
         $data['result'] = $model;
-        $data['errors'] = '';
+        $data['errors'] = [];
         return response()->json($data);
     }
 
@@ -80,7 +80,7 @@ class ProductController extends Controller
 
         $data['status'] = 'OK';
         $data['result'] = $model;
-        $data['errors'] = '';
+        $data['errors'] = [];
         return response()->json($data);
     }
 
@@ -91,7 +91,7 @@ class ProductController extends Controller
 
         $data['status'] = 'OK';
         $data['result'] = [ 'message' =>  $id. ' deleted' ];
-        $data['errors'] = '';
+        $data['errors'] = [];
         return response()->json($data);
     }
 
